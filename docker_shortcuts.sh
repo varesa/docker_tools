@@ -2,6 +2,9 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 
+alias gps='git push'
+alias gpl='git pull'
+
 dps()  {
   docker ps $@ | awk '
   NR==1{
