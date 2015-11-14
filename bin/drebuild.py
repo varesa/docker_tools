@@ -55,7 +55,8 @@ print("Renaming old container")
 docker_call(['rename', name, backup_name])
 print("Starting new container:")
 create_cmd = subprocess.check_output(['dgetcmd.py', backup_name, name])
+create_cmd_split = [arg.strip('"\n') for arg in create_cmd.split(' ')]
 print(create_cmd)
-subprocess.call(create_cmd.strip().split(' '))
+subprocess.call(create_cmd_split)
 
 print('New container ' + name + " running. You may wish to remove " + backup_name)
