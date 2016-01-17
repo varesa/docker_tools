@@ -33,6 +33,8 @@ env = container['Config']['Env']
 
 image = container['Config']['Image']
 cmd = container['Config']['Cmd']
+if not cmd:
+	cmd = ""
 
 run =  "docker run"
 run += " --name " + new_name
@@ -53,6 +55,6 @@ run += " --volumes-from " + name
 for var in env:
 	run += " -e \"" + var + "\""
 
-run += " " + image + " " + ' '.join(cmd)
+run += " " + str(image) + " " + ' '.join(cmd)
 
 print(run)
