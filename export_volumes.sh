@@ -29,7 +29,7 @@ if [ -z "$volumes" ]; then
 fi
 
 for path in $volumes; do
-	file=$(echo $path | sed 's:/:%20:g').tar
+	file=$(echo $path | sed 's:/:%2F:g').tar
 	echo Copying $path
 	docker run --rm -ti --volumes-from "$1" -v "$(readlink -f $2):/volume_export/" busybox tar -cf /volume_export/$file $path
 done
