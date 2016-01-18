@@ -54,7 +54,10 @@ if new_name != name:
 	run += " --volumes-from " + name
 
 for var in env:
-	run += " -e \"" + var + "\""
+	if var.startswith("PATH="):
+		continue
+	else:
+		run += " -e \"" + var + "\""
 
 run += " " + str(image) + " " + ' '.join(cmd)
 
