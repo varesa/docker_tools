@@ -20,7 +20,7 @@ container = json.loads(container_json)[0]
 name = container['Name'][1:]
 
 if not new_name:
-	new_name = name + "-2"
+	new_name = name #+ "-2"
 
 port_bindings = container['HostConfig']['PortBindings']
 
@@ -50,7 +50,8 @@ for port in port_bindings:
 for vol in mounts:
 	run += " -v " + vol['Source'] + ":" + vol['Destination']
 
-run += " --volumes-from " + name
+if new_name != name:
+	run += " --volumes-from " + name
 
 for var in env:
 	run += " -e \"" + var + "\""
