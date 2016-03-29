@@ -47,8 +47,8 @@ alias di='docker inspect'
 
 dcent() { docker run --rm -ti centos bash; }
 dcentos() { docker run --rm -ti centos bash; }
-dcentv() { docker run --rm -ti --volumes-from $1 centos bash; }
-dcentosv() { docker run --rm -ti --volumes-from $1 centos bash; }
+dcentv() { docker run --rm -ti --volumes-from $@ centos bash; }
+dcentosv() { docker run --rm -ti --volumes-from $@ centos bash; }
 reg="registry.esav.fi:5000"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
