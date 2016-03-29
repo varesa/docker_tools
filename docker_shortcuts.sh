@@ -45,11 +45,16 @@ alias dl='docker logs --tail=50'
 alias dlf='docker logs --tail=20 -f'
 alias di='docker inspect'
 
-dcent() { docker run --rm -ti centos bash; }
-dcentos() { docker run --rm -ti centos bash; }
-dcentv() { docker run --rm -ti --volumes-from $1 centos bash; }
-dcentosv() { docker run --rm -ti --volumes-from $1 centos bash; }
 reg="registry.esav.fi:5000"
+
+dcent() { docker run --rm -ti registry.esav.fi:5000/centos bash; }
+dcentos() { docker run --rm -ti registry.esav.fi:5000/centos bash; }
+
+dcentv() { docker run --rm -ti --volumes-from $1 registry.esav.fi:5000/centos bash; }
+dcentosv() { docker run --rm -ti --volumes-from $1 registry.esav.fi:5000/centos bash; }
+
+dbash() { docker exec -ti $1 bash; }
+
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export PATH="$PATH:$DIR/bin"
