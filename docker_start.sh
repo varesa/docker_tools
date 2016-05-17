@@ -1,4 +1,4 @@
 #!/bin/sh
 
 sleep $1
-docker start -ai $2
+exec docker start -ai $2
