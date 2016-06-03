@@ -1,0 +1,10 @@
+[Unit]
+Description=docker autostart
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/local/bin/docker-autostart.py
+
+[Install]
+WantedBy=multi-user.target
