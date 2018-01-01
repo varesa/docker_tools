@@ -44,7 +44,7 @@ dpsa() { dps -a $@; }
 alias dl='docker logs --tail=50'
 alias dlf='docker logs --tail=20 -f'
 alias di='docker inspect'
-
+alias dip='docker inspect --format "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"'
 reg="registry.esav.fi:5000"
 
 dcent() { docker run --rm -ti $@ registry.esav.fi:5000/centos bash; }
