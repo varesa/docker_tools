@@ -44,7 +44,8 @@ if container_exists(backup_name):
 
 print("Pulling new image")
 
-image = subprocess.check_output(['docker', 'inspect', '--format="{{.Config.Image}}"', name]).strip()
+image = subprocess.check_output(['docker', 'inspect', '--format={{.Config.Image}}', name]).strip()
+print(image)
 docker_call(['pull', image], output=True)
 
 ## Do the switching
